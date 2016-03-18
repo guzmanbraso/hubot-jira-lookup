@@ -137,6 +137,9 @@ reportIssue = (robot, msg, issue) ->
         try
           json = JSON.parse(body)
 
+          if json.errorMessages
+            robot.logger.debug "Jira returned error in json: #{json.errorMessages}"
+
           data = {
             'key': {
               key: 'Key'
